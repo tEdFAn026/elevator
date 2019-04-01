@@ -11,14 +11,17 @@ public aspect Task1 {
 	 */
 	public Elevator.State aState;
 
-	pointcut stateTrace() : get(Elevator.State Elevator.state);
+	pointcut stateTrace() : set(Elevator.State Elevator.state);
 
-	after() returning(Elevator.State value): stateTrace() {
-		System.out.println("From " + aState + " to " + value);
-		aState = value;
+	before(Elevator e) : stateTrace() && target(e) {
+		System.out.print("From " + e.getState() + " ");
+
 	}
-	
-	
+
+	after(Elevator e) : stateTrace() && target(e) {
+		System.out.println("to " + e.getState());
+	}
+
 	/**
 	 * b. Not processed event trace
 	 */
