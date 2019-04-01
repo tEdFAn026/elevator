@@ -9,8 +9,6 @@ public aspect Task1 {
 	/**
 	 * a. State trace
 	 */
-	public Elevator.State aState;
-
 	pointcut stateTrace() : set(Elevator.State Elevator.state);
 
 	before(Elevator e) : stateTrace() && target(e) {
