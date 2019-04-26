@@ -1,5 +1,2 @@
-
-images.bin
-images.bin
 *.class
-*.class
+META-INF/MANIFEST.MF
